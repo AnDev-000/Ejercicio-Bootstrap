@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/">
+
+    <!-- boostrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- calendario date picker-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    
+    <title>Formulario</title>
+</head>
+<body>
+    <div class="container">
+
+        <!-- formulario con un margin top 5 y padding 2 -->
+        <form action="guardar.php" method="post" id="form" class="row mt-5 g-2">
+            <!-- ingreso nombre cliente -->
+            <div class="col-6">
+                <label for="nombreInput" class="form-label">Nombre Contacto</label>
+                <input name="nombre" type="text" class="form-control" id="nombreInput" placeholder="Ingrese aqui su nombre">
+            </div>
+            <!-- ingreso apellido cliente -->
+            <div class="col-6">
+                <label for="apellidoInput" class="form-label">Apellido Contacto</label>
+                <input name="apellido" type="text" class="form-control" id="apellidoInput" placeholder="Ingrese aqui su apellido">
+            </div>
+            <!-- ingreso correo -->
+            <div class="col-12">
+                <label for="emailInput" class="form-label ">Email</label>
+                <input name="email" type="email" class="form-control" id="emailInput" placeholder="Ingrese aqui tu correo">
+            </div>
+            <!-- ingreso telefono -->
+            <div class="col-6">
+                <label for="telefonoInput" class="form-label">Telefono</label>
+                <input name="telefono" type="text" class="form-control" id="telefonoInput" placeholder="Ingrese aqui su telefono">
+            </div>
+            <!-- acceso a la plataforma -->
+            <div class="col-12">
+                <div class="form-check">
+                    <input type="checkbox" value="1" class="form-check-input" id="accesoCheck" name="accesoPlataforma">
+                    <label for="accesoCheck" class="form-check-label">Acceso a plataforma</label>
+                </div>
+            </div>
+
+            <!-- Contrato cliente -->
+            <div class="col-12 ">
+                <label for="radioCliente" class="form-label">Contrato cliente</label>
+                <div class=“form-check” id="radioCliente"> 
+                    <input type="radio" class=“form-check-input”  name="clienteContrato" value="si" id="radio1"> 
+                    <label class=“form-check-label” for=“Radio1”> Sí </label> 
+                </div> 
+                <div class=“form-check” id="radioCliente"> 
+                    <input type="radio" class=“form-check-input”  name="clienteContrato" value="no" id="radio2"> 
+                    <label class=“form-check-label” for=“Radio2”> No </label> 
+                </div> 
+                <p></p>
+            </div>
+            
+            <!-- Año ingreso selector -->
+            <div class="col-12 ">
+                <!-- el primer valor del elemento select ha quedado por defecto seleccionado esto a modo de ayuda para el usuario y a la vez lo he desabilitado para no poder ser seleccionado por el usuario -->
+                <label for="anioIngreso" class="form-label">Año de ingreso</label>
+                <select class="form-select" id="anioIngreso" name="anioIngreso">
+                    <option value="0" selected disabled>Ingresa aqui tu año de ingreso</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                </select>
+                <p></p>
+            </div>
+            
+            <!-- calendario -->
+            <div class="col-12 ">
+                <div class="row form-group">
+                    <label for="date" class="col-form-label">Fecha de nacimiento</label>
+                    <div class="col-4">
+                        <div class="input-group date" id="datepicker">
+                            <input type="text" class="form-control" id="fechaInput" name="fechaNacimiento">
+                            <span class="input-group-append">
+                                <span class="input-group-text bg-white d-block">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <script type="text/javascript">
+                $(function() {
+                    $('#datepicker').datepicker();
+                });
+            </script>
+
+            <!-- Comentarios -->
+            <div class="col-12 ">
+                <div class="mb-3">
+                    <label for="comentarioTextarea" class="form-label">Comentarios</label>
+                    <textarea id="comentarioTextarea" class="form-control" placeholder="" name="comentarios" ></textarea>
+                </div>
+                <p></p>
+            </div>
+            
+            <!-- boton enviar -->
+            <button type="submit" class="btn btn-primary" value="Enviar" name="enviar">Enviar</button>
+
+        </form>
+        
+        <!-- mensaje errores datos ingresados -->
+        <div id="error"></div>
+    </div>
+
+    <!-- script validaciones -->
+    <script src="assets/js/validaciones.js"></script>
+
+</body>
+</html>
